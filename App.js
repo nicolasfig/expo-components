@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import Constants from "expo-constants";
 import * as Permissions from "expo-permissions";
 import * as Location from "expo-location";
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 
 export default class App extends Component{
 	
@@ -22,6 +22,8 @@ export default class App extends Component{
 			return;
 		}
 		let location = await Location.getCurrentPositionAsync({});
+		let utica = (await Location.geocodeAsync("calle 170"))[0];
+		console.log(utica);
 		this.setState({location});
 	};
 	render(){
@@ -37,7 +39,13 @@ export default class App extends Component{
 					latitudeDelta: 0.0922,
 					longitudeDelta: 0.0421
 				}}
+			>
+			<Marker 
+				coordinate={this.state.location.coords}
+				title="Buena la rata"
 			/>
+			</MapView>
+
 		);
 	}
 }
