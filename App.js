@@ -24,8 +24,6 @@ export default class App extends Component {
 			return;
 		}
 		let location = await Location.getCurrentPositionAsync({});
-		let codabas = (await Location.geocodeAsync("Codabas, Bogotá"))[0];
-		console.log(typeof(codabas));
 		this.setState({
 			location,
 			places: {
@@ -71,3 +69,5 @@ const styles = StyleSheet.create({
 		paddingTop: Constants.statusBarHeight
 	}
 });
+
+// TODO: Fix marker errors
