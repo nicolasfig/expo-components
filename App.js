@@ -1,17 +1,19 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 import Constants from "expo-constants";
 import * as Permissions from "expo-permissions";
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 
-export default class App extends Component{
-	
+export default class App extends Component {
 	state = {
 		location: null,
-	}
+		places: {
+			codabas: null
+		}
+	};
 
-	componentDidMount(){
+	componentDidMount() {
 		this._getLocationAsync();
 	}
 
@@ -22,13 +24,18 @@ export default class App extends Component{
 			return;
 		}
 		let location = await Location.getCurrentPositionAsync({});
-		let utica = (await Location.geocodeAsync("calle 170"))[0];
-		console.log(utica);
-		this.setState({location});
+		let codabas = (await Location.geocodeAsync("Codabas, Bogotá"))[0];
+		console.log(typeof(codabas));
+		this.setState({
+			location,
+			places: {
+				codabas
+			}
+		});
 	};
-	render(){
-		if(!this.state.location){
-			return (<View/>)
+	render() {
+		if (!this.state.location) {
+			return <View />;
 		}
 		return (
 			<MapView
@@ -36,16 +43,21 @@ export default class App extends Component{
 				initialRegion={{
 					latitude: this.state.location.coords.latitude,
 					longitude: this.state.location.coords.longitude,
-					latitudeDelta: 0.0922,
-					longitudeDelta: 0.0421
+					latitudeDelta: 0.0922 / 3,
+					longitudeDelta: 0.0421 / 3,
 				}}
 			>
-			<Marker 
-				coordinate={this.state.location.coords}
-				title="Buena la rata"
-			/>
+				<Marker
+					coordinate={this.state.location.coords}
+					title="Mi casa"
+					pinColor="green"
+				/>
+				<Marker
+					coordinate={this.state.places.codabas}
+					title="Codabas"
+					pinColor="red"
+				/>
 			</MapView>
-
 		);
 	}
 }
