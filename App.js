@@ -5,6 +5,9 @@ import Maps from './Maps';
 import TextTest from './TextTest';
 
 export default class App extends Component {
+
+	
+
 	render() {
 		return <TextTest/>
 	}
