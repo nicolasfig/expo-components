@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
 import Constants from "expo-constants";
 import { Video } from "expo-av";
-import * as Font from 'expo-font';
-import { Asset } from 'expo-asset';
+import * as Font from "expo-font";
+import { Asset } from "expo-asset";
 import { AppLoading } from "expo";
 
 let green = "#477009";
@@ -19,34 +19,34 @@ export default class Cats extends Component {
 
 	playAsync = async () => {
 		await this._video.replayAsync();
-    };
-    
-    _loadAssets = async () => {
-        Asset.loadAsync([
-            require('./assets/1.mp4'),
-            require('./assets/2.mp4'),
-            require('./assets/3.mp4'),
-            require('./assets/4.mp4'),
-            require('./assets/5.mp4'),
-            require('./assets/6.mp4'),
-            require('./assets/7.mp4'),
-            require('./assets/8.mp4'),
-            require('./assets/9.mp4'),
-        ])
-    }
-    
-    setUpAsync = async () => {
-        await this._loadAssets();
-        await this._loadFontAsync();
-        await this.setState({
+	};
+
+	_loadAssets = async () => {
+		Asset.loadAsync([
+			require("./assets/1.mp4"),
+			require("./assets/2.mp4"),
+			require("./assets/3.mp4"),
+			require("./assets/4.mp4"),
+			require("./assets/5.mp4"),
+			require("./assets/6.mp4"),
+			require("./assets/7.mp4"),
+			require("./assets/8.mp4"),
+			require("./assets/9.mp4")
+		]);
+	};
+
+	setUpAsync = async () => {
+		await this._loadAssets();
+		await this._loadFontAsync();
+		await this.setState({
 			isReady: true
 		});
-    }
+	};
 
 	_loadFontAsync = async () => {
-        await Font.loadAsync({
-            CooperBlackRegular: require("./assets/CooperBlackRegular.ttf")
-        });
+		await Font.loadAsync({
+			CooperBlackRegular: require("./assets/CooperBlackRegular.ttf")
+		});
 	};
 
 	render() {
@@ -55,21 +55,13 @@ export default class Cats extends Component {
 		}
 		return (
 			<View style={styles.container}>
-				<Text
-					style={{
-						color: yellow,
-						fontSize: 34,
-						fontFamily: "CooperBlackRegular",
-					}}
-				>
-					Cat Sounds
-				</Text>
-				<TouchableHighlight
-					onPress={() => {
-						this.playAsync();
-					}}
-				>
-					<View style={styles.videoContainer}>
+				<Text style={styles.text}>Cat Sounds</Text>
+				<View style={styles.videoContainer}>
+					<TouchableHighlight
+						onPress={() => {
+							this.playAsync();
+						}}
+					>
 						<Video
 							source={require("./assets/1.mp4")}
 							rate={1.0}
@@ -83,7 +75,13 @@ export default class Cats extends Component {
 								this._video = c;
 							}}
 						/>
-                        <Video
+					</TouchableHighlight>
+					<TouchableHighlight
+						onPress={() => {
+							this.playAsync();
+						}}
+					>
+						<Video
 							source={require("./assets/2.mp4")}
 							rate={1.0}
 							volume={1.0}
@@ -96,7 +94,13 @@ export default class Cats extends Component {
 								this._video = c;
 							}}
 						/>
-                        <Video
+					</TouchableHighlight>
+					<TouchableHighlight
+						onPress={() => {
+							this.playAsync();
+						}}
+					>
+						<Video
 							source={require("./assets/3.mp4")}
 							rate={1.0}
 							volume={1.0}
@@ -109,8 +113,126 @@ export default class Cats extends Component {
 								this._video = c;
 							}}
 						/>
-					</View>
-				</TouchableHighlight>
+					</TouchableHighlight>
+				</View>
+				<View style={styles.videoContainer}>
+					<TouchableHighlight
+						onPress={() => {
+							this.playAsync();
+						}}
+					>
+						<Video
+							source={require("./assets/4.mp4")}
+							rate={1.0}
+							volume={1.0}
+							isMuted={false}
+							resizeMode="cover"
+							shouldPlay={false}
+							isLooping={false}
+							style={{ width: 200, height: 200 }}
+							ref={c => {
+								this._video = c;
+							}}
+						/>
+					</TouchableHighlight>
+					<TouchableHighlight
+						onPress={() => {
+							this.playAsync();
+						}}
+					>
+						<Video
+							source={require("./assets/5.mp4")}
+							rate={1.0}
+							volume={1.0}
+							isMuted={false}
+							resizeMode="cover"
+							shouldPlay={false}
+							isLooping={false}
+							style={{ width: 200, height: 200 }}
+							ref={c => {
+								this._video = c;
+							}}
+						/>
+					</TouchableHighlight>
+					<TouchableHighlight
+						onPress={() => {
+							this.playAsync();
+						}}
+					>
+						<Video
+							source={require("./assets/6.mp4")}
+							rate={1.0}
+							volume={1.0}
+							isMuted={false}
+							resizeMode="cover"
+							shouldPlay={false}
+							isLooping={false}
+							style={{ width: 200, height: 200 }}
+							ref={c => {
+								this._video = c;
+							}}
+						/>
+					</TouchableHighlight>
+				</View>
+				<View style={styles.videoContainer}>
+					<TouchableHighlight
+						onPress={() => {
+							this.playAsync();
+						}}
+					>
+						<Video
+							source={require("./assets/7.mp4")}
+							rate={1.0}
+							volume={1.0}
+							isMuted={false}
+							resizeMode="cover"
+							shouldPlay={false}
+							isLooping={false}
+							style={{ width: 200, height: 200 }}
+							ref={c => {
+								this._video = c;
+							}}
+						/>
+					</TouchableHighlight>
+					<TouchableHighlight
+						onPress={() => {
+							this.playAsync();
+						}}
+					>
+						<Video
+							source={require("./assets/8.mp4")}
+							rate={1.0}
+							volume={1.0}
+							isMuted={false}
+							resizeMode="cover"
+							shouldPlay={false}
+							isLooping={false}
+							style={{ width: 200, height: 200 }}
+							ref={c => {
+								this._video = c;
+							}}
+						/>
+					</TouchableHighlight>
+					<TouchableHighlight
+						onPress={() => {
+							this.playAsync();
+						}}
+					>
+						<Video
+							source={require("./assets/9.mp4")}
+							rate={1.0}
+							volume={1.0}
+							isMuted={false}
+							resizeMode="cover"
+							shouldPlay={false}
+							isLooping={false}
+							style={{ width: 200, height: 200 }}
+							ref={c => {
+								this._video = c;
+							}}
+						/>
+					</TouchableHighlight>
+				</View>
 			</View>
 		);
 	}
@@ -122,9 +244,14 @@ const styles = StyleSheet.create({
 		backgroundColor: green,
 		alignItems: "center",
 		justifyContent: "center",
-        paddingTop: Constants.statusBarHeight,
-    }, 
-    videoContainer: {
-        flexDirection: 'row'
-    }
+		paddingTop: Constants.statusBarHeight
+	},
+	videoContainer: {
+		flexDirection: "row"
+	},
+	text: {
+		color: yellow,
+		fontSize: 34,
+		fontFamily: "CooperBlackRegular",
+	}
 });
