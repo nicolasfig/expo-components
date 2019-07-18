@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 import Constants from "expo-constants";
+import Camera from './Camera';
 import Cats from './Cats';
 import Maps from './Maps';
 import TextTest from './TextTest';
@@ -9,7 +10,7 @@ import Motion from './Motion';
 export default class App extends Component {
 
 	render() {
-		return <Cats/>
+		return <Camera/>
 	}
 }
 
