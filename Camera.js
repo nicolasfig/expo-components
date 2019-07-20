@@ -49,14 +49,22 @@ export default class Camera extends Component {
 						style={styles.image}
 					/>
 				</View>
+				<View style={{flexDirection: 'row', marginLeft: 20}}>
 				<Button onPress={this._launchCameraRollAsync} title="Gallery" />
+                <Button title="Launch Camera" onPress={this._launchCameraAsync}/>
+				</View>
 				{(this.state.chosenImage && 
 					<Image
 						source={{ uri: this.state.chosenImage.uri }}
 						style={styles.image}
 					/>
 				)}
-                <Button title="Launch Camera" onPress={this._launchCameraAsync}/>
+				{(this.state.takenImage && 
+					<Image
+						source={{ uri: this.state.takenImage.uri }}
+						style={styles.image}
+					/>
+				)}
 			</View>
 		);
 	}
